@@ -84,25 +84,8 @@
 .end method
 
 .method public static showMessage(Landroid/app/Activity;)V
-    .registers 2
+    .registers 1
 
-    :try_start_0
-    new-instance v0, Lcom/apksam/task/DevMsg;
-
-    invoke-direct {v0, p0}, Lcom/apksam/task/DevMsg;-><init>(Landroid/content/Context;)V
-
-    invoke-direct {v0}, Lcom/apksam/task/DevMsg;->showMessage()V
-    :try_end_8
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_8} :catch_9
-
-    goto :goto_d
-
-    :catch_9
-    move-exception v0
-
-    invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
-
-    :goto_d
     return-void
 .end method
 
