@@ -1,0 +1,147 @@
+.class synthetic Lcom/gold/extension/youtube/settings/preference/SpoofVideoStreamsSideEffectsPreference$1;
+.super Ljava/lang/Object;
+.source "SpoofVideoStreamsSideEffectsPreference.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/gold/extension/youtube/settings/preference/SpoofVideoStreamsSideEffectsPreference;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1009
+    name = null
+.end annotation
+
+
+# static fields
+.field static final synthetic $SwitchMap$app$morphe$extension$shared$spoof$ClientType:[I
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .registers 3
+
+    .line 95
+    invoke-static {}, Lcom/gold/extension/shared/spoof/ClientType;->values()[Lcom/gold/extension/shared/spoof/ClientType;
+
+    move-result-object v0
+
+    array-length v0, v0
+
+    new-array v0, v0, [I
+
+    sput-object v0, Lcom/gold/extension/youtube/settings/preference/SpoofVideoStreamsSideEffectsPreference$1;->$SwitchMap$app$morphe$extension$shared$spoof$ClientType:[I
+
+    :try_start_9
+    sget-object v1, Lcom/gold/extension/shared/spoof/ClientType;->ANDROID_CREATOR:Lcom/gold/extension/shared/spoof/ClientType;
+
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x1
+
+    aput v2, v0, v1
+    :try_end_12
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_9 .. :try_end_12} :catch_12
+
+    :catch_12
+    :try_start_12
+    sget-object v0, Lcom/gold/extension/youtube/settings/preference/SpoofVideoStreamsSideEffectsPreference$1;->$SwitchMap$app$morphe$extension$shared$spoof$ClientType:[I
+
+    sget-object v1, Lcom/gold/extension/shared/spoof/ClientType;->ANDROID_REEL_AUTH:Lcom/gold/extension/shared/spoof/ClientType;
+
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x2
+
+    aput v2, v0, v1
+    :try_end_1d
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_12 .. :try_end_1d} :catch_1d
+
+    :catch_1d
+    :try_start_1d
+    sget-object v0, Lcom/gold/extension/youtube/settings/preference/SpoofVideoStreamsSideEffectsPreference$1;->$SwitchMap$app$morphe$extension$shared$spoof$ClientType:[I
+
+    sget-object v1, Lcom/gold/extension/shared/spoof/ClientType;->ANDROID_REEL_NO_AUTH:Lcom/gold/extension/shared/spoof/ClientType;
+
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x3
+
+    aput v2, v0, v1
+    :try_end_28
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1d .. :try_end_28} :catch_28
+
+    :catch_28
+    :try_start_28
+    sget-object v0, Lcom/gold/extension/youtube/settings/preference/SpoofVideoStreamsSideEffectsPreference$1;->$SwitchMap$app$morphe$extension$shared$spoof$ClientType:[I
+
+    sget-object v1, Lcom/gold/extension/shared/spoof/ClientType;->ANDROID_VR_1_64:Lcom/gold/extension/shared/spoof/ClientType;
+
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x4
+
+    aput v2, v0, v1
+    :try_end_33
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_28 .. :try_end_33} :catch_33
+
+    :catch_33
+    :try_start_33
+    sget-object v0, Lcom/gold/extension/youtube/settings/preference/SpoofVideoStreamsSideEffectsPreference$1;->$SwitchMap$app$morphe$extension$shared$spoof$ClientType:[I
+
+    sget-object v1, Lcom/gold/extension/shared/spoof/ClientType;->ANDROID_VR_1_65:Lcom/gold/extension/shared/spoof/ClientType;
+
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x5
+
+    aput v2, v0, v1
+    :try_end_3e
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_33 .. :try_end_3e} :catch_3e
+
+    :catch_3e
+    :try_start_3e
+    sget-object v0, Lcom/gold/extension/youtube/settings/preference/SpoofVideoStreamsSideEffectsPreference$1;->$SwitchMap$app$morphe$extension$shared$spoof$ClientType:[I
+
+    sget-object v1, Lcom/gold/extension/shared/spoof/ClientType;->TV:Lcom/gold/extension/shared/spoof/ClientType;
+
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x6
+
+    aput v2, v0, v1
+    :try_end_49
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_3e .. :try_end_49} :catch_49
+
+    :catch_49
+    :try_start_49
+    sget-object v0, Lcom/gold/extension/youtube/settings/preference/SpoofVideoStreamsSideEffectsPreference$1;->$SwitchMap$app$morphe$extension$shared$spoof$ClientType:[I
+
+    sget-object v1, Lcom/gold/extension/shared/spoof/ClientType;->VISIONOS:Lcom/gold/extension/shared/spoof/ClientType;
+
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x7
+
+    aput v2, v0, v1
+    :try_end_54
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_49 .. :try_end_54} :catch_54
+
+    :catch_54
+    return-void
+.end method

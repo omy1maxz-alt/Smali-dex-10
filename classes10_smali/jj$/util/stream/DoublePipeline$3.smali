@@ -1,0 +1,35 @@
+.class Ljj$/util/stream/DoublePipeline$3;
+.super Ljj$/util/stream/IntPipeline$StatelessOp;
+.source "DoublePipeline.java"
+
+
+# instance fields
+.field final synthetic this$0:Ljj$/util/stream/DoublePipeline;
+
+.field final synthetic val$mapper:Ljava/util/function/DoubleToIntFunction;
+
+
+# direct methods
+.method constructor <init>(Ljj$/util/stream/DoublePipeline;Ljj$/util/stream/AbstractPipeline;Ljj$/util/stream/StreamShape;ILjava/util/function/DoubleToIntFunction;)V
+    .registers 6
+
+    iput-object p1, p0, Ljj$/util/stream/DoublePipeline$3;->this$0:Ljj$/util/stream/DoublePipeline;
+
+    iput-object p5, p0, Ljj$/util/stream/DoublePipeline$3;->val$mapper:Ljava/util/function/DoubleToIntFunction;
+
+    invoke-direct {p0, p2, p3, p4}, Ljj$/util/stream/IntPipeline$StatelessOp;-><init>(Ljj$/util/stream/AbstractPipeline;Ljj$/util/stream/StreamShape;I)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method opWrapSink(ILjj$/util/stream/Sink;)Ljj$/util/stream/Sink;
+    .registers 4
+
+    new-instance v0, Ljj$/util/stream/DoublePipeline$3$1;
+
+    invoke-direct {v0, p0, p2}, Ljj$/util/stream/DoublePipeline$3$1;-><init>(Ljj$/util/stream/DoublePipeline$3;Ljj$/util/stream/Sink;)V
+
+    return-object v0
+.end method

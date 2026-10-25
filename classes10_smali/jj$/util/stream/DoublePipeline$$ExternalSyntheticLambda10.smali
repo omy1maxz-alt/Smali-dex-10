@@ -1,0 +1,40 @@
+.class public final synthetic Ljj$/util/stream/DoublePipeline$$ExternalSyntheticLambda10;
+.super Ljava/lang/Object;
+.source "D8$$SyntheticClass"
+
+# interfaces
+.implements Ljava/util/function/BiConsumer;
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final accept(Ljava/lang/Object;Ljava/lang/Object;)V
+    .registers 3
+
+    check-cast p1, [D
+
+    check-cast p2, [D
+
+    invoke-static {p1, p2}, Ljj$/util/stream/DoublePipeline;->lambda$sum$3([D[D)V
+
+    return-void
+.end method
+
+.method public synthetic andThen(Ljava/util/function/BiConsumer;)Ljava/util/function/BiConsumer;
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/function/BiConsumer$-CC;->$default$andThen(Ljava/util/function/BiConsumer;Ljava/util/function/BiConsumer;)Ljava/util/function/BiConsumer;
+
+    move-result-object p1
+
+    return-object p1
+.end method

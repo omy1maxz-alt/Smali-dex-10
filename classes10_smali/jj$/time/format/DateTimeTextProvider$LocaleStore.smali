@@ -1,0 +1,214 @@
+.class final Ljj$/time/format/DateTimeTextProvider$LocaleStore;
+.super Ljava/lang/Object;
+.source "DateTimeTextProvider.java"
+
+
+# instance fields
+.field private final parsable:Ljava/util/Map;
+
+.field private final valueTextMap:Ljava/util/Map;
+
+
+# direct methods
+.method constructor <init>(Ljava/util/Map;)V
+    .registers 12
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Ljj$/time/format/DateTimeTextProvider$LocaleStore;->valueTextMap:Ljava/util/Map;
+
+    new-instance v0, Ljava/util/HashMap;
+
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    new-instance v1, Ljava/util/ArrayList;
+
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+
+    invoke-interface {p1}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+
+    move-result-object v2
+
+    invoke-interface {v2}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v2
+
+    :goto_17
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_81
+
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/util/Map$Entry;
+
+    new-instance v4, Ljava/util/HashMap;
+
+    invoke-direct {v4}, Ljava/util/HashMap;-><init>()V
+
+    invoke-interface {v3}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    move-result-object v5
+
+    check-cast v5, Ljava/util/Map;
+
+    invoke-interface {v5}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+
+    move-result-object v5
+
+    invoke-interface {v5}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v5
+
+    :goto_36
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v6
+
+    if-eqz v6, :cond_60
+
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Ljava/util/Map$Entry;
+
+    invoke-interface {v6}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Ljava/lang/String;
+
+    invoke-interface {v6}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Ljava/lang/String;
+
+    invoke-interface {v6}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    move-result-object v9
+
+    check-cast v9, Ljava/lang/Long;
+
+    invoke-static {v8, v9}, Ljj$/time/format/DateTimeTextProvider;->-$$Nest$smcreateEntry(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map$Entry;
+
+    move-result-object v8
+
+    invoke-interface {v4, v7, v8}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v7
+
+    if-eqz v7, :cond_5f
+
+    goto :goto_36
+
+    :cond_5f
+    goto :goto_36
+
+    :cond_60
+    new-instance v5, Ljava/util/ArrayList;
+
+    invoke-interface {v4}, Ljava/util/Map;->values()Ljava/util/Collection;
+
+    move-result-object v6
+
+    invoke-direct {v5, v6}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+
+    invoke-static {}, Ljj$/time/format/DateTimeTextProvider;->-$$Nest$sfgetCOMPARATOR()Ljava/util/Comparator;
+
+    move-result-object v6
+
+    invoke-static {v5, v6}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
+
+    invoke-interface {v3}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Ljj$/time/format/TextStyle;
+
+    invoke-interface {v0, v6, v5}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    invoke-interface {v1, v5}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
+
+    const/4 v6, 0x0
+
+    invoke-interface {v0, v6, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    goto :goto_17
+
+    :cond_81
+    invoke-static {}, Ljj$/time/format/DateTimeTextProvider;->-$$Nest$sfgetCOMPARATOR()Ljava/util/Comparator;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
+
+    iput-object v0, p0, Ljj$/time/format/DateTimeTextProvider$LocaleStore;->parsable:Ljava/util/Map;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method getText(JLjj$/time/format/TextStyle;)Ljava/lang/String;
+    .registers 6
+
+    iget-object v0, p0, Ljj$/time/format/DateTimeTextProvider$LocaleStore;->valueTextMap:Ljava/util/Map;
+
+    invoke-interface {v0, p3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/util/Map;
+
+    if-eqz v0, :cond_15
+
+    invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v1
+
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/String;
+
+    goto :goto_16
+
+    :cond_15
+    const/4 v1, 0x0
+
+    :goto_16
+    return-object v1
+.end method
+
+.method getTextIterator(Ljj$/time/format/TextStyle;)Ljava/util/Iterator;
+    .registers 4
+
+    iget-object v0, p0, Ljj$/time/format/DateTimeTextProvider$LocaleStore;->parsable:Ljava/util/Map;
+
+    invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/util/List;
+
+    if-eqz v0, :cond_f
+
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    goto :goto_10
+
+    :cond_f
+    const/4 v1, 0x0
+
+    :goto_10
+    return-object v1
+.end method

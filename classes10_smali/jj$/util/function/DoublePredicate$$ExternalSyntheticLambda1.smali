@@ -1,0 +1,72 @@
+.class public final synthetic Ljj$/util/function/DoublePredicate$$ExternalSyntheticLambda1;
+.super Ljava/lang/Object;
+.source "D8$$SyntheticClass"
+
+# interfaces
+.implements Ljava/util/function/DoublePredicate;
+
+
+# instance fields
+.field public final synthetic f$0:Ljava/util/function/DoublePredicate;
+
+.field public final synthetic f$1:Ljava/util/function/DoublePredicate;
+
+
+# direct methods
+.method public synthetic constructor <init>(Ljava/util/function/DoublePredicate;Ljava/util/function/DoublePredicate;)V
+    .registers 3
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Ljj$/util/function/DoublePredicate$$ExternalSyntheticLambda1;->f$0:Ljava/util/function/DoublePredicate;
+
+    iput-object p2, p0, Ljj$/util/function/DoublePredicate$$ExternalSyntheticLambda1;->f$1:Ljava/util/function/DoublePredicate;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public synthetic and(Ljava/util/function/DoublePredicate;)Ljava/util/function/DoublePredicate;
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/function/DoublePredicate$-CC;->$default$and(Ljava/util/function/DoublePredicate;Ljava/util/function/DoublePredicate;)Ljava/util/function/DoublePredicate;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public synthetic negate()Ljava/util/function/DoublePredicate;
+    .registers 2
+
+    invoke-static {p0}, Ljj$/util/function/DoublePredicate$-CC;->$default$negate(Ljava/util/function/DoublePredicate;)Ljava/util/function/DoublePredicate;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public synthetic or(Ljava/util/function/DoublePredicate;)Ljava/util/function/DoublePredicate;
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/function/DoublePredicate$-CC;->$default$or(Ljava/util/function/DoublePredicate;Ljava/util/function/DoublePredicate;)Ljava/util/function/DoublePredicate;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final test(D)Z
+    .registers 5
+
+    iget-object v0, p0, Ljj$/util/function/DoublePredicate$$ExternalSyntheticLambda1;->f$0:Ljava/util/function/DoublePredicate;
+
+    iget-object v1, p0, Ljj$/util/function/DoublePredicate$$ExternalSyntheticLambda1;->f$1:Ljava/util/function/DoublePredicate;
+
+    invoke-static {v0, v1, p1, p2}, Ljj$/util/function/DoublePredicate$-CC;->$private$lambda$or$2(Ljava/util/function/DoublePredicate;Ljava/util/function/DoublePredicate;D)Z
+
+    move-result p1
+
+    return p1
+.end method

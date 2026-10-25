@@ -1,0 +1,346 @@
+.class public abstract Ljj$/time/zone/ZoneRulesProvider;
+.super Ljava/lang/Object;
+.source "ZoneRulesProvider.java"
+
+
+# static fields
+.field private static final PROVIDERS:Ljava/util/concurrent/CopyOnWriteArrayList;
+
+.field private static final ZONES:Ljava/util/concurrent/ConcurrentMap;
+
+.field private static volatile ZONE_IDS:Ljava/util/Set;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .registers 4
+
+    new-instance v0, Ljava/util/concurrent/CopyOnWriteArrayList;
+
+    invoke-direct {v0}, Ljava/util/concurrent/CopyOnWriteArrayList;-><init>()V
+
+    sput-object v0, Ljj$/time/zone/ZoneRulesProvider;->PROVIDERS:Ljava/util/concurrent/CopyOnWriteArrayList;
+
+    new-instance v0, Ljj$/util/concurrent/ConcurrentHashMap;
+
+    const/high16 v1, 0x3f400000  # 0.75f
+
+    const/4 v2, 0x2
+
+    const/16 v3, 0x200
+
+    invoke-direct {v0, v3, v1, v2}, Ljj$/util/concurrent/ConcurrentHashMap;-><init>(IFI)V
+
+    sput-object v0, Ljj$/time/zone/ZoneRulesProvider;->ZONES:Ljava/util/concurrent/ConcurrentMap;
+
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    new-instance v1, Ljj$/time/zone/ZoneRulesProvider$1;
+
+    invoke-direct {v1, v0}, Ljj$/time/zone/ZoneRulesProvider$1;-><init>(Ljava/util/List;)V
+
+    invoke-static {v1}, Ljava/security/AccessController;->doPrivileged(Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+
+    sget-object v1, Ljj$/time/zone/ZoneRulesProvider;->PROVIDERS:Ljava/util/concurrent/CopyOnWriteArrayList;
+
+    invoke-virtual {v1, v0}, Ljava/util/concurrent/CopyOnWriteArrayList;->addAll(Ljava/util/Collection;)Z
+
+    return-void
+.end method
+
+.method protected constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static getAvailableZoneIds()Ljava/util/Set;
+    .registers 1
+
+    sget-object v0, Ljj$/time/zone/ZoneRulesProvider;->ZONE_IDS:Ljava/util/Set;
+
+    return-object v0
+.end method
+
+.method private static getProvider(Ljava/lang/String;)Ljj$/time/zone/ZoneRulesProvider;
+    .registers 5
+
+    sget-object v0, Ljj$/time/zone/ZoneRulesProvider;->ZONES:Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-interface {v0, p0}, Ljava/util/concurrent/ConcurrentMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljj$/time/zone/ZoneRulesProvider;
+
+    if-nez v0, :cond_33
+
+    sget-object v1, Ljj$/time/zone/ZoneRulesProvider;->ZONES:Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-interface {v1}, Ljava/util/concurrent/ConcurrentMap;->isEmpty()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1a
+
+    new-instance v1, Ljj$/time/zone/ZoneRulesException;
+
+    const-string v2, "No time-zone data files registered"
+
+    invoke-direct {v1, v2}, Ljj$/time/zone/ZoneRulesException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    :cond_1a
+    new-instance v1, Ljj$/time/zone/ZoneRulesException;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Unknown time-zone ID: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Ljj$/time/zone/ZoneRulesException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    :cond_33
+    return-object v0
+.end method
+
+.method public static getRules(Ljava/lang/String;Z)Ljj$/time/zone/ZoneRules;
+    .registers 3
+
+    const-string v0, "zoneId"
+
+    invoke-static {p0, v0}, Ljj$/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+
+    invoke-static {p0}, Ljj$/time/zone/ZoneRulesProvider;->getProvider(Ljava/lang/String;)Ljj$/time/zone/ZoneRulesProvider;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p0, p1}, Ljj$/time/zone/ZoneRulesProvider;->provideRules(Ljava/lang/String;Z)Ljj$/time/zone/ZoneRules;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public static getVersions(Ljava/lang/String;)Ljava/util/NavigableMap;
+    .registers 2
+
+    const-string v0, "zoneId"
+
+    invoke-static {p0, v0}, Ljj$/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+
+    invoke-static {p0}, Ljj$/time/zone/ZoneRulesProvider;->getProvider(Ljava/lang/String;)Ljj$/time/zone/ZoneRulesProvider;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p0}, Ljj$/time/zone/ZoneRulesProvider;->provideVersions(Ljava/lang/String;)Ljava/util/NavigableMap;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public static refresh()Z
+    .registers 4
+
+    const/4 v0, 0x0
+
+    sget-object v1, Ljj$/time/zone/ZoneRulesProvider;->PROVIDERS:Ljava/util/concurrent/CopyOnWriteArrayList;
+
+    invoke-virtual {v1}, Ljava/util/concurrent/CopyOnWriteArrayList;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    :goto_7
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_19
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljj$/time/zone/ZoneRulesProvider;
+
+    invoke-virtual {v2}, Ljj$/time/zone/ZoneRulesProvider;->provideRefresh()Z
+
+    move-result v3
+
+    or-int/2addr v0, v3
+
+    goto :goto_7
+
+    :cond_19
+    return v0
+.end method
+
+.method public static registerProvider(Ljj$/time/zone/ZoneRulesProvider;)V
+    .registers 2
+
+    const-string v0, "provider"
+
+    invoke-static {p0, v0}, Ljj$/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+
+    invoke-static {p0}, Ljj$/time/zone/ZoneRulesProvider;->registerProvider0(Ljj$/time/zone/ZoneRulesProvider;)V
+
+    sget-object v0, Ljj$/time/zone/ZoneRulesProvider;->PROVIDERS:Ljava/util/concurrent/CopyOnWriteArrayList;
+
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/CopyOnWriteArrayList;->add(Ljava/lang/Object;)Z
+
+    return-void
+.end method
+
+.method private static declared-synchronized registerProvider0(Ljj$/time/zone/ZoneRulesProvider;)V
+    .registers 7
+
+    const-class v0, Ljj$/time/zone/ZoneRulesProvider;
+
+    monitor-enter v0
+
+    :try_start_3
+    invoke-virtual {p0}, Ljj$/time/zone/ZoneRulesProvider;->provideZoneIds()Ljava/util/Set;
+
+    move-result-object v1
+
+    invoke-interface {v1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    :goto_b
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_4a
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/lang/String;
+
+    const-string v3, "zoneId"
+
+    invoke-static {v2, v3}, Ljj$/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+
+    sget-object v3, Ljj$/time/zone/ZoneRulesProvider;->ZONES:Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-interface {v3, v2, p0}, Ljava/util/concurrent/ConcurrentMap;->putIfAbsent(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljj$/time/zone/ZoneRulesProvider;
+
+    if-nez v3, :cond_27
+
+    goto :goto_b
+
+    :cond_27
+    new-instance v1, Ljj$/time/zone/ZoneRulesException;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "Unable to register zone as one already registered with that ID: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const-string v5, ", currently loading from provider: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-direct {v1, v4}, Ljj$/time/zone/ZoneRulesException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    :cond_4a
+    new-instance v1, Ljava/util/HashSet;
+
+    sget-object v2, Ljj$/time/zone/ZoneRulesProvider;->ZONES:Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-interface {v2}, Ljava/util/concurrent/ConcurrentMap;->keySet()Ljava/util/Set;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V
+
+    invoke-static {v1}, Ljava/util/Collections;->unmodifiableSet(Ljava/util/Set;)Ljava/util/Set;
+
+    move-result-object v2
+
+    sput-object v2, Ljj$/time/zone/ZoneRulesProvider;->ZONE_IDS:Ljava/util/Set;
+    :try_end_5b
+    .catchall {:try_start_3 .. :try_end_5b} :catchall_5d
+
+    monitor-exit v0
+
+    return-void
+
+    :catchall_5d
+    move-exception p0
+
+    :try_start_5e
+    monitor-exit v0
+    :try_end_5f
+    .catchall {:try_start_5e .. :try_end_5f} :catchall_5d
+
+    throw p0
+.end method
+
+
+# virtual methods
+.method protected provideRefresh()Z
+    .registers 2
+
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method protected abstract provideRules(Ljava/lang/String;Z)Ljj$/time/zone/ZoneRules;
+.end method
+
+.method protected abstract provideVersions(Ljava/lang/String;)Ljava/util/NavigableMap;
+.end method
+
+.method protected abstract provideZoneIds()Ljava/util/Set;
+.end method

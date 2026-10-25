@@ -1,0 +1,141 @@
+.class final Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;
+.super Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator;
+.source "StreamSpliterators.java"
+
+# interfaces
+.implements Ljj$/util/Spliterator$OfInt;
+
+
+# instance fields
+.field final s:Ljava/util/function/IntSupplier;
+
+
+# direct methods
+.method constructor <init>(JLjava/util/function/IntSupplier;)V
+    .registers 4
+
+    invoke-direct {p0, p1, p2}, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator;-><init>(J)V
+
+    iput-object p3, p0, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;->s:Ljava/util/function/IntSupplier;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public bridge synthetic forEachRemaining(Ljava/lang/Object;)V
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/Spliterator$OfInt$-CC;->$default$forEachRemaining(Ljj$/util/Spliterator$OfInt;Ljava/lang/Object;)V
+
+    return-void
+.end method
+
+.method public synthetic forEachRemaining(Ljava/util/function/Consumer;)V
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/Spliterator$OfInt$-CC;->$default$forEachRemaining(Ljj$/util/Spliterator$OfInt;Ljava/util/function/Consumer;)V
+
+    return-void
+.end method
+
+.method public synthetic forEachRemaining(Ljava/util/function/IntConsumer;)V
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/Spliterator$OfInt$-CC;->$default$forEachRemaining(Ljj$/util/Spliterator$OfInt;Ljava/util/function/IntConsumer;)V
+
+    return-void
+.end method
+
+.method public bridge synthetic tryAdvance(Ljava/lang/Object;)Z
+    .registers 2
+
+    check-cast p1, Ljava/util/function/IntConsumer;
+
+    invoke-virtual {p0, p1}, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;->tryAdvance(Ljava/util/function/IntConsumer;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public synthetic tryAdvance(Ljava/util/function/Consumer;)Z
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/Spliterator$OfInt$-CC;->$default$tryAdvance(Ljj$/util/Spliterator$OfInt;Ljava/util/function/Consumer;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public tryAdvance(Ljava/util/function/IntConsumer;)Z
+    .registers 3
+
+    invoke-static {p1}, Ljj$/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
+    iget-object v0, p0, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;->s:Ljava/util/function/IntSupplier;
+
+    invoke-interface {v0}, Ljava/util/function/IntSupplier;->getAsInt()I
+
+    move-result v0
+
+    invoke-interface {p1, v0}, Ljava/util/function/IntConsumer;->accept(I)V
+
+    const/4 v0, 0x1
+
+    return v0
+.end method
+
+.method public trySplit()Ljj$/util/Spliterator$OfInt;
+    .registers 6
+
+    iget-wide v0, p0, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;->estimate:J
+
+    const-wide/16 v2, 0x0
+
+    cmp-long v4, v0, v2
+
+    if-nez v4, :cond_a
+
+    const/4 v0, 0x0
+
+    return-object v0
+
+    :cond_a
+    new-instance v0, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;
+
+    iget-wide v1, p0, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;->estimate:J
+
+    const/4 v3, 0x1
+
+    ushr-long/2addr v1, v3
+
+    iput-wide v1, p0, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;->estimate:J
+
+    iget-object v3, p0, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;->s:Ljava/util/function/IntSupplier;
+
+    invoke-direct {v0, v1, v2, v3}, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;-><init>(JLjava/util/function/IntSupplier;)V
+
+    return-object v0
+.end method
+
+.method public bridge synthetic trySplit()Ljj$/util/Spliterator$OfPrimitive;
+    .registers 2
+
+    invoke-virtual {p0}, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;->trySplit()Ljj$/util/Spliterator$OfInt;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public bridge synthetic trySplit()Ljj$/util/Spliterator;
+    .registers 2
+
+    invoke-virtual {p0}, Ljj$/util/stream/StreamSpliterators$InfiniteSupplyingSpliterator$OfInt;->trySplit()Ljj$/util/Spliterator$OfInt;
+
+    move-result-object v0
+
+    return-object v0
+.end method

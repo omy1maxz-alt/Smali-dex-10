@@ -1,0 +1,104 @@
+.class final Lio/reactivex/rxjava3/internal/operators/flowable/FlowableToList$ToListSubscriber;
+.super Lio/reactivex/rxjava3/internal/subscriptions/DeferredScalarSubscription;
+.source "FlowableToList.java"
+
+# interfaces
+.implements Lio/reactivex/rxjava3/core/FlowableSubscriber;
+
+
+# static fields
+.field private static final serialVersionUID:J = -0x70e2558c7ced9df0L
+
+
+# instance fields
+.field upstream:Lorg/reactivestreams/Subscription;
+
+
+# direct methods
+.method constructor <init>(Lorg/reactivestreams/Subscriber;Ljava/util/Collection;)V
+    .registers 3
+
+    invoke-direct {p0, p1}, Lio/reactivex/rxjava3/internal/subscriptions/DeferredScalarSubscription;-><init>(Lorg/reactivestreams/Subscriber;)V
+
+    iput-object p2, p0, Lio/reactivex/rxjava3/internal/subscriptions/DeferredScalarSubscription;->value:Ljava/lang/Object;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public cancel()V
+    .registers 2
+
+    invoke-super {p0}, Lio/reactivex/rxjava3/internal/subscriptions/DeferredScalarSubscription;->cancel()V
+
+    iget-object v0, p0, Lio/reactivex/rxjava3/internal/operators/flowable/FlowableToList$ToListSubscriber;->upstream:Lorg/reactivestreams/Subscription;
+
+    invoke-interface {v0}, Lorg/reactivestreams/Subscription;->cancel()V
+
+    return-void
+.end method
+
+.method public onComplete()V
+    .registers 2
+
+    iget-object v0, p0, Lio/reactivex/rxjava3/internal/subscriptions/DeferredScalarSubscription;->value:Ljava/lang/Object;
+
+    invoke-virtual {p0, v0}, Lio/reactivex/rxjava3/internal/subscriptions/DeferredScalarSubscription;->complete(Ljava/lang/Object;)V
+
+    return-void
+.end method
+
+.method public onError(Ljava/lang/Throwable;)V
+    .registers 3
+
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lio/reactivex/rxjava3/internal/subscriptions/DeferredScalarSubscription;->value:Ljava/lang/Object;
+
+    iget-object v0, p0, Lio/reactivex/rxjava3/internal/subscriptions/DeferredScalarSubscription;->downstream:Lorg/reactivestreams/Subscriber;
+
+    invoke-interface {v0, p1}, Lorg/reactivestreams/Subscriber;->onError(Ljava/lang/Throwable;)V
+
+    return-void
+.end method
+
+.method public onNext(Ljava/lang/Object;)V
+    .registers 3
+
+    iget-object v0, p0, Lio/reactivex/rxjava3/internal/subscriptions/DeferredScalarSubscription;->value:Ljava/lang/Object;
+
+    check-cast v0, Ljava/util/Collection;
+
+    if-eqz v0, :cond_9
+
+    invoke-interface {v0, p1}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z
+
+    :cond_9
+    return-void
+.end method
+
+.method public onSubscribe(Lorg/reactivestreams/Subscription;)V
+    .registers 4
+
+    iget-object v0, p0, Lio/reactivex/rxjava3/internal/operators/flowable/FlowableToList$ToListSubscriber;->upstream:Lorg/reactivestreams/Subscription;
+
+    invoke-static {v0, p1}, Lio/reactivex/rxjava3/internal/subscriptions/SubscriptionHelper;->validate(Lorg/reactivestreams/Subscription;Lorg/reactivestreams/Subscription;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_17
+
+    iput-object p1, p0, Lio/reactivex/rxjava3/internal/operators/flowable/FlowableToList$ToListSubscriber;->upstream:Lorg/reactivestreams/Subscription;
+
+    iget-object v0, p0, Lio/reactivex/rxjava3/internal/subscriptions/DeferredScalarSubscription;->downstream:Lorg/reactivestreams/Subscriber;
+
+    invoke-interface {v0, p0}, Lorg/reactivestreams/Subscriber;->onSubscribe(Lorg/reactivestreams/Subscription;)V
+
+    const-wide v0, 0x7fffffffffffffffL
+
+    invoke-interface {p1, v0, v1}, Lorg/reactivestreams/Subscription;->request(J)V
+
+    :cond_17
+    return-void
+.end method

@@ -1,0 +1,31 @@
+.class public final synthetic Ljj$/com/android/tools/r8/DesugarMethodHandlesLookup;
+.super Ljava/lang/Object;
+.source "D8$$SyntheticClass"
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public synthetic findVarHandle(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Class;)Ljj$/com/android/tools/r8/DesugarVarHandle;
+    .registers 5
+
+    new-instance v0, Ljj$/com/android/tools/r8/DesugarVarHandle;
+
+    invoke-direct {v0, p1, p2, p3}, Ljj$/com/android/tools/r8/DesugarVarHandle;-><init>(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Class;)V
+
+    return-object v0
+.end method
+
+.method public synthetic toPrivateLookupIn(Ljava/lang/Class;)Ljj$/com/android/tools/r8/DesugarMethodHandlesLookup;
+    .registers 2
+
+    return-object p0
+.end method

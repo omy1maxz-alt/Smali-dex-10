@@ -1,0 +1,149 @@
+.class public final synthetic Ljj$/util/function/Predicate$-CC;
+.super Ljava/lang/Object;
+.source "Predicate.java"
+
+
+# direct methods
+.method public static $default$and(Ljava/util/function/Predicate;Ljava/util/function/Predicate;)Ljava/util/function/Predicate;
+    .registers 3
+
+    invoke-static {p1}, Ljj$/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
+    new-instance v0, Ljj$/util/function/Predicate$$ExternalSyntheticLambda0;
+
+    invoke-direct {v0, p0, p1}, Ljj$/util/function/Predicate$$ExternalSyntheticLambda0;-><init>(Ljava/util/function/Predicate;Ljava/util/function/Predicate;)V
+
+    return-object v0
+.end method
+
+.method public static $default$negate(Ljava/util/function/Predicate;)Ljava/util/function/Predicate;
+    .registers 2
+
+    new-instance v0, Ljj$/util/function/Predicate$$ExternalSyntheticLambda1;
+
+    invoke-direct {v0, p0}, Ljj$/util/function/Predicate$$ExternalSyntheticLambda1;-><init>(Ljava/util/function/Predicate;)V
+
+    return-object v0
+.end method
+
+.method public static $default$or(Ljava/util/function/Predicate;Ljava/util/function/Predicate;)Ljava/util/function/Predicate;
+    .registers 3
+
+    invoke-static {p1}, Ljj$/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
+    new-instance v0, Ljj$/util/function/Predicate$$ExternalSyntheticLambda2;
+
+    invoke-direct {v0, p0, p1}, Ljj$/util/function/Predicate$$ExternalSyntheticLambda2;-><init>(Ljava/util/function/Predicate;Ljava/util/function/Predicate;)V
+
+    return-object v0
+.end method
+
+.method public static synthetic $private$lambda$and$0(Ljava/util/function/Predicate;Ljava/util/function/Predicate;Ljava/lang/Object;)Z
+    .registers 4
+
+    invoke-interface {p0, p2}, Ljava/util/function/Predicate;->test(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_e
+
+    invoke-interface {p1, p2}, Ljava/util/function/Predicate;->test(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_e
+
+    const/4 v0, 0x1
+
+    goto :goto_f
+
+    :cond_e
+    const/4 v0, 0x0
+
+    :goto_f
+    return v0
+.end method
+
+.method public static synthetic $private$lambda$negate$1(Ljava/util/function/Predicate;Ljava/lang/Object;)Z
+    .registers 3
+
+    invoke-interface {p0, p1}, Ljava/util/function/Predicate;->test(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    xor-int/lit8 v0, v0, 0x1
+
+    return v0
+.end method
+
+.method public static synthetic $private$lambda$or$2(Ljava/util/function/Predicate;Ljava/util/function/Predicate;Ljava/lang/Object;)Z
+    .registers 4
+
+    invoke-interface {p0, p2}, Ljava/util/function/Predicate;->test(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_f
+
+    invoke-interface {p1, p2}, Ljava/util/function/Predicate;->test(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_d
+
+    goto :goto_f
+
+    :cond_d
+    const/4 v0, 0x0
+
+    goto :goto_10
+
+    :cond_f
+    :goto_f
+    const/4 v0, 0x1
+
+    :goto_10
+    return v0
+.end method
+
+.method public static isEqual(Ljava/lang/Object;)Ljava/util/function/Predicate;
+    .registers 2
+
+    if-nez p0, :cond_8
+
+    new-instance v0, Ljj$/util/function/Predicate$$ExternalSyntheticLambda3;
+
+    invoke-direct {v0}, Ljj$/util/function/Predicate$$ExternalSyntheticLambda3;-><init>()V
+
+    goto :goto_d
+
+    :cond_8
+    new-instance v0, Ljj$/util/function/Predicate$$ExternalSyntheticLambda4;
+
+    invoke-direct {v0, p0}, Ljj$/util/function/Predicate$$ExternalSyntheticLambda4;-><init>(Ljava/lang/Object;)V
+
+    :goto_d
+    return-object v0
+.end method
+
+.method public static synthetic lambda$isEqual$3(Ljava/lang/Object;Ljava/lang/Object;)Z
+    .registers 3
+
+    invoke-virtual {p0, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public static not(Ljava/util/function/Predicate;)Ljava/util/function/Predicate;
+    .registers 2
+
+    invoke-static {p0}, Ljj$/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
+    invoke-interface {p0}, Ljava/util/function/Predicate;->negate()Ljava/util/function/Predicate;
+
+    move-result-object v0
+
+    return-object v0
+.end method

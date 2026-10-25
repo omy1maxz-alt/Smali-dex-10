@@ -1,0 +1,146 @@
+.class public final synthetic Ljj$/time/Clock$VivifiedWrapper;
+.super Ljj$/time/Clock;
+.source "D8$$SyntheticClass"
+
+
+# instance fields
+.field public final synthetic wrappedValue:Ljava/time/Clock;
+
+
+# direct methods
+.method private synthetic constructor <init>(Ljava/time/Clock;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljj$/time/Clock;-><init>()V
+
+    iput-object p1, p0, Ljj$/time/Clock$VivifiedWrapper;->wrappedValue:Ljava/time/Clock;
+
+    return-void
+.end method
+
+.method public static synthetic convert(Ljava/time/Clock;)Ljj$/time/Clock;
+    .registers 2
+
+    if-nez p0, :cond_4
+
+    const/4 p0, 0x0
+
+    return-object p0
+
+    :cond_4
+    instance-of v0, p0, Ljj$/time/Clock$Wrapper;
+
+    if-eqz v0, :cond_d
+
+    check-cast p0, Ljj$/time/Clock$Wrapper;
+
+    iget-object p0, p0, Ljj$/time/Clock$Wrapper;->wrappedValue:Ljj$/time/Clock;
+
+    return-object p0
+
+    :cond_d
+    new-instance v0, Ljj$/time/Clock$VivifiedWrapper;
+
+    invoke-direct {v0, p0}, Ljj$/time/Clock$VivifiedWrapper;-><init>(Ljava/time/Clock;)V
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public synthetic equals(Ljava/lang/Object;)Z
+    .registers 4
+
+    iget-object v0, p0, Ljj$/time/Clock$VivifiedWrapper;->wrappedValue:Ljava/time/Clock;
+
+    instance-of v1, p1, Ljj$/time/Clock$VivifiedWrapper;
+
+    if-eqz v1, :cond_a
+
+    check-cast p1, Ljj$/time/Clock$VivifiedWrapper;
+
+    iget-object p1, p1, Ljj$/time/Clock$VivifiedWrapper;->wrappedValue:Ljava/time/Clock;
+
+    :cond_a
+    invoke-virtual {v0, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public synthetic getZone()Ljj$/time/ZoneId;
+    .registers 2
+
+    iget-object v0, p0, Ljj$/time/Clock$VivifiedWrapper;->wrappedValue:Ljava/time/Clock;
+
+    invoke-virtual {v0}, Ljava/time/Clock;->getZone()Ljava/time/ZoneId;
+
+    move-result-object v0
+
+    invoke-static {v0}, Ljj$/time/TimeConversions;->convert(Ljava/time/ZoneId;)Ljj$/time/ZoneId;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public synthetic hashCode()I
+    .registers 2
+
+    iget-object v0, p0, Ljj$/time/Clock$VivifiedWrapper;->wrappedValue:Ljava/time/Clock;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public synthetic instant()Ljj$/time/Instant;
+    .registers 2
+
+    iget-object v0, p0, Ljj$/time/Clock$VivifiedWrapper;->wrappedValue:Ljava/time/Clock;
+
+    invoke-virtual {v0}, Ljava/time/Clock;->instant()Ljava/time/Instant;
+
+    move-result-object v0
+
+    invoke-static {v0}, Ljj$/time/TimeConversions;->convert(Ljava/time/Instant;)Ljj$/time/Instant;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public synthetic millis()J
+    .registers 3
+
+    iget-object v0, p0, Ljj$/time/Clock$VivifiedWrapper;->wrappedValue:Ljava/time/Clock;
+
+    invoke-virtual {v0}, Ljava/time/Clock;->millis()J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method
+
+.method public synthetic withZone(Ljj$/time/ZoneId;)Ljj$/time/Clock;
+    .registers 3
+
+    iget-object v0, p0, Ljj$/time/Clock$VivifiedWrapper;->wrappedValue:Ljava/time/Clock;
+
+    invoke-static {p1}, Ljj$/time/TimeConversions;->convert(Ljj$/time/ZoneId;)Ljava/time/ZoneId;
+
+    move-result-object p1
+
+    invoke-virtual {v0, p1}, Ljava/time/Clock;->withZone(Ljava/time/ZoneId;)Ljava/time/Clock;
+
+    move-result-object p1
+
+    invoke-static {p1}, Ljj$/time/Clock$VivifiedWrapper;->convert(Ljava/time/Clock;)Ljj$/time/Clock;
+
+    move-result-object p1
+
+    return-object p1
+.end method

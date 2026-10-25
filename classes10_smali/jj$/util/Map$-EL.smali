@@ -1,0 +1,337 @@
+.class public final synthetic Ljj$/util/Map$-EL;
+.super Ljava/lang/Object;
+.source "D8$$SyntheticClass"
+
+
+# direct methods
+.method public static synthetic compute(Ljava/util/Map;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+    .registers 4
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_b
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1, p2}, Ljj$/util/Map;->compute(Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_b
+    instance-of v0, p0, Ljava/util/concurrent/ConcurrentMap;
+
+    if-eqz v0, :cond_16
+
+    check-cast p0, Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-static {p0, p1, p2}, Ljj$/util/concurrent/ConcurrentMap$-CC;->$default$compute(Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_16
+    invoke-static {p0, p1, p2}, Ljj$/util/Map$-CC;->$default$compute(Ljava/util/Map;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic computeIfAbsent(Ljava/util/Map;Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+    .registers 4
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_b
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1, p2}, Ljj$/util/Map;->computeIfAbsent(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_b
+    instance-of v0, p0, Ljava/util/concurrent/ConcurrentMap;
+
+    if-eqz v0, :cond_16
+
+    check-cast p0, Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-static {p0, p1, p2}, Ljj$/util/concurrent/ConcurrentMap$-CC;->$default$computeIfAbsent(Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_16
+    invoke-static {p0, p1, p2}, Ljj$/util/Map$-CC;->$default$computeIfAbsent(Ljava/util/Map;Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic computeIfPresent(Ljava/util/Map;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+    .registers 4
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_b
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1, p2}, Ljj$/util/Map;->computeIfPresent(Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_b
+    instance-of v0, p0, Ljava/util/concurrent/ConcurrentMap;
+
+    if-eqz v0, :cond_16
+
+    check-cast p0, Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-static {p0, p1, p2}, Ljj$/util/concurrent/ConcurrentMap$-CC;->$default$computeIfPresent(Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_16
+    invoke-static {p0, p1, p2}, Ljj$/util/Map$-CC;->$default$computeIfPresent(Ljava/util/Map;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic forEach(Ljava/util/Map;Ljava/util/function/BiConsumer;)V
+    .registers 3
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_a
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1}, Ljj$/util/Map;->forEach(Ljava/util/function/BiConsumer;)V
+
+    return-void
+
+    :cond_a
+    instance-of v0, p0, Ljava/util/concurrent/ConcurrentMap;
+
+    if-eqz v0, :cond_14
+
+    check-cast p0, Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-static {p0, p1}, Ljj$/util/concurrent/ConcurrentMap$-CC;->$default$forEach(Ljava/util/concurrent/ConcurrentMap;Ljava/util/function/BiConsumer;)V
+
+    return-void
+
+    :cond_14
+    invoke-static {p0, p1}, Ljj$/util/Map$-CC;->$default$forEach(Ljava/util/Map;Ljava/util/function/BiConsumer;)V
+
+    return-void
+.end method
+
+.method public static synthetic getOrDefault(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 4
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_b
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1, p2}, Ljj$/util/Map;->getOrDefault(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_b
+    instance-of v0, p0, Ljava/util/concurrent/ConcurrentMap;
+
+    if-eqz v0, :cond_16
+
+    check-cast p0, Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-static {p0, p1, p2}, Ljj$/util/concurrent/ConcurrentMap$-CC;->$default$getOrDefault(Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_16
+    invoke-static {p0, p1, p2}, Ljj$/util/Map$-CC;->$default$getOrDefault(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic merge(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+    .registers 5
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_b
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1, p2, p3}, Ljj$/util/Map;->merge(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_b
+    instance-of v0, p0, Ljava/util/concurrent/ConcurrentMap;
+
+    if-eqz v0, :cond_16
+
+    check-cast p0, Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-static {p0, p1, p2, p3}, Ljj$/util/concurrent/ConcurrentMap$-CC;->$default$merge(Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_16
+    invoke-static {p0, p1, p2, p3}, Ljj$/util/Map$-CC;->$default$merge(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic putIfAbsent(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 4
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_b
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1, p2}, Ljj$/util/Map;->putIfAbsent(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_b
+    invoke-static {p0, p1, p2}, Ljj$/util/Map$-CC;->$default$putIfAbsent(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic remove(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)Z
+    .registers 4
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_b
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1, p2}, Ljj$/util/Map;->remove(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+
+    :cond_b
+    invoke-static {p0, p1, p2}, Ljj$/util/Map$-CC;->$default$remove(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static synthetic replace(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 4
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_b
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1, p2}, Ljj$/util/Map;->replace(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_b
+    invoke-static {p0, p1, p2}, Ljj$/util/Map$-CC;->$default$replace(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic replace(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+    .registers 5
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_b
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1, p2, p3}, Ljj$/util/Map;->replace(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+
+    :cond_b
+    invoke-static {p0, p1, p2, p3}, Ljj$/util/Map$-CC;->$default$replace(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static synthetic replaceAll(Ljava/util/Map;Ljava/util/function/BiFunction;)V
+    .registers 3
+
+    instance-of v0, p0, Ljj$/util/Map;
+
+    if-eqz v0, :cond_a
+
+    check-cast p0, Ljj$/util/Map;
+
+    invoke-interface {p0, p1}, Ljj$/util/Map;->replaceAll(Ljava/util/function/BiFunction;)V
+
+    return-void
+
+    :cond_a
+    instance-of v0, p0, Ljava/util/concurrent/ConcurrentMap;
+
+    if-eqz v0, :cond_14
+
+    check-cast p0, Ljava/util/concurrent/ConcurrentMap;
+
+    invoke-static {p0, p1}, Ljj$/util/concurrent/ConcurrentMap$-CC;->$default$replaceAll(Ljava/util/concurrent/ConcurrentMap;Ljava/util/function/BiFunction;)V
+
+    return-void
+
+    :cond_14
+    invoke-static {p0, p1}, Ljj$/util/Map$-CC;->$default$replaceAll(Ljava/util/Map;Ljava/util/function/BiFunction;)V
+
+    return-void
+.end method

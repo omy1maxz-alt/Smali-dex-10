@@ -1,0 +1,60 @@
+.class public final synthetic Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;
+.super Ljava/lang/Object;
+.source "R8$$SyntheticClass"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field public final synthetic f$0:Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine;
+
+.field public final synthetic f$1:[B
+
+.field public final synthetic f$2:J
+
+.field public final synthetic f$3:F
+
+.field public final synthetic f$4:Ljava/lang/Runnable;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine;[BJFLjava/lang/Runnable;)V
+    .registers 7
+
+    .line 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;->f$0:Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine;
+
+    iput-object p2, p0, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;->f$1:[B
+
+    iput-wide p3, p0, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;->f$2:J
+
+    iput p5, p0, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;->f$3:F
+
+    iput-object p6, p0, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;->f$4:Ljava/lang/Runnable;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .registers 7
+
+    .line 0
+    iget-object v0, p0, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;->f$0:Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine;
+
+    iget-object v1, p0, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;->f$1:[B
+
+    iget-wide v2, p0, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;->f$2:J
+
+    iget v4, p0, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;->f$3:F
+
+    iget-object v5, p0, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine$$ExternalSyntheticLambda17;->f$4:Ljava/lang/Runnable;
+
+    invoke-static/range {v0 .. v5}, Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine;->$r8$lambda$6ZjrI6hAwxoJ0CH4S87Ol5GZ97E(Lcom/gold/extension/youtube/patches/voiceovertranslation/TtsEngine;[BJFLjava/lang/Runnable;)V
+
+    return-void
+.end method

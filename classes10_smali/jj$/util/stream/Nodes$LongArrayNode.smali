@@ -1,0 +1,370 @@
+.class Ljj$/util/stream/Nodes$LongArrayNode;
+.super Ljava/lang/Object;
+.source "Nodes.java"
+
+# interfaces
+.implements Ljj$/util/stream/Node$OfLong;
+
+
+# instance fields
+.field final array:[J
+
+.field curSize:I
+
+
+# direct methods
+.method constructor <init>(J)V
+    .registers 6
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    const-wide/32 v0, 0x7ffffff7
+
+    cmp-long v2, p1, v0
+
+    if-gez v2, :cond_13
+
+    long-to-int v0, p1
+
+    new-array v0, v0, [J
+
+    iput-object v0, p0, Ljj$/util/stream/Nodes$LongArrayNode;->array:[J
+
+    const/4 v0, 0x0
+
+    iput v0, p0, Ljj$/util/stream/Nodes$LongArrayNode;->curSize:I
+
+    return-void
+
+    :cond_13
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "Stream size exceeds max array size"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method constructor <init>([J)V
+    .registers 3
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Ljj$/util/stream/Nodes$LongArrayNode;->array:[J
+
+    array-length v0, p1
+
+    iput v0, p0, Ljj$/util/stream/Nodes$LongArrayNode;->curSize:I
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public synthetic asArray(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/stream/Node$OfPrimitive$-CC;->$default$asArray(Ljj$/util/stream/Node$OfPrimitive;Ljava/util/function/IntFunction;)[Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public bridge synthetic asPrimitiveArray()Ljava/lang/Object;
+    .registers 2
+
+    invoke-virtual {p0}, Ljj$/util/stream/Nodes$LongArrayNode;->asPrimitiveArray()[J
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public asPrimitiveArray()[J
+    .registers 3
+
+    iget-object v0, p0, Ljj$/util/stream/Nodes$LongArrayNode;->array:[J
+
+    array-length v0, v0
+
+    iget v1, p0, Ljj$/util/stream/Nodes$LongArrayNode;->curSize:I
+
+    if-ne v0, v1, :cond_a
+
+    iget-object v0, p0, Ljj$/util/stream/Nodes$LongArrayNode;->array:[J
+
+    return-object v0
+
+    :cond_a
+    iget-object v0, p0, Ljj$/util/stream/Nodes$LongArrayNode;->array:[J
+
+    iget v1, p0, Ljj$/util/stream/Nodes$LongArrayNode;->curSize:I
+
+    invoke-static {v0, v1}, Ljava/util/Arrays;->copyOf([JI)[J
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public bridge synthetic copyInto(Ljava/lang/Object;I)V
+    .registers 3
+
+    check-cast p1, [J
+
+    invoke-virtual {p0, p1, p2}, Ljj$/util/stream/Nodes$LongArrayNode;->copyInto([JI)V
+
+    return-void
+.end method
+
+.method public copyInto([JI)V
+    .registers 6
+
+    iget-object v0, p0, Ljj$/util/stream/Nodes$LongArrayNode;->array:[J
+
+    const/4 v1, 0x0
+
+    iget v2, p0, Ljj$/util/stream/Nodes$LongArrayNode;->curSize:I
+
+    invoke-static {v0, v1, p1, p2, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    return-void
+.end method
+
+.method public synthetic copyInto([Ljava/lang/Long;I)V
+    .registers 3
+
+    invoke-static {p0, p1, p2}, Ljj$/util/stream/Node$OfLong$-CC;->$default$copyInto(Ljj$/util/stream/Node$OfLong;[Ljava/lang/Long;I)V
+
+    return-void
+.end method
+
+.method public bridge synthetic copyInto([Ljava/lang/Object;I)V
+    .registers 3
+
+    invoke-static {p0, p1, p2}, Ljj$/util/stream/Node$OfLong$-CC;->$default$copyInto(Ljj$/util/stream/Node$OfLong;[Ljava/lang/Object;I)V
+
+    return-void
+.end method
+
+.method public count()J
+    .registers 3
+
+    iget v0, p0, Ljj$/util/stream/Nodes$LongArrayNode;->curSize:I
+
+    int-to-long v0, v0
+
+    return-wide v0
+.end method
+
+.method public bridge synthetic forEach(Ljava/lang/Object;)V
+    .registers 2
+
+    check-cast p1, Ljava/util/function/LongConsumer;
+
+    invoke-virtual {p0, p1}, Ljj$/util/stream/Nodes$LongArrayNode;->forEach(Ljava/util/function/LongConsumer;)V
+
+    return-void
+.end method
+
+.method public synthetic forEach(Ljava/util/function/Consumer;)V
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/stream/Node$OfLong$-CC;->$default$forEach(Ljj$/util/stream/Node$OfLong;Ljava/util/function/Consumer;)V
+
+    return-void
+.end method
+
+.method public forEach(Ljava/util/function/LongConsumer;)V
+    .registers 6
+
+    const/4 v0, 0x0
+
+    :goto_1
+    iget v1, p0, Ljj$/util/stream/Nodes$LongArrayNode;->curSize:I
+
+    if-ge v0, v1, :cond_f
+
+    iget-object v1, p0, Ljj$/util/stream/Nodes$LongArrayNode;->array:[J
+
+    aget-wide v2, v1, v0
+
+    invoke-interface {p1, v2, v3}, Ljava/util/function/LongConsumer;->accept(J)V
+
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_1
+
+    :cond_f
+    return-void
+.end method
+
+.method public synthetic getChild(I)Ljj$/util/stream/Node$OfPrimitive;
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/stream/Node$OfPrimitive$-CC;->$default$getChild(Ljj$/util/stream/Node$OfPrimitive;I)Ljj$/util/stream/Node$OfPrimitive;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public bridge synthetic getChild(I)Ljj$/util/stream/Node;
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/stream/Node$OfPrimitive$-CC;->$default$getChild(Ljj$/util/stream/Node$OfPrimitive;I)Ljj$/util/stream/Node;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public synthetic getChildCount()I
+    .registers 2
+
+    invoke-static {p0}, Ljj$/util/stream/Node$-CC;->$default$getChildCount(Ljj$/util/stream/Node;)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public synthetic getShape()Ljj$/util/stream/StreamShape;
+    .registers 2
+
+    invoke-static {p0}, Ljj$/util/stream/Node$OfLong$-CC;->$default$getShape(Ljj$/util/stream/Node$OfLong;)Ljj$/util/stream/StreamShape;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public bridge synthetic newArray(I)Ljava/lang/Object;
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/stream/Node$OfLong$-CC;->$default$newArray(Ljj$/util/stream/Node$OfLong;I)Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public synthetic newArray(I)[J
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/stream/Node$OfLong$-CC;->$default$newArray(Ljj$/util/stream/Node$OfLong;I)[J
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public spliterator()Ljj$/util/Spliterator$OfLong;
+    .registers 4
+
+    iget-object v0, p0, Ljj$/util/stream/Nodes$LongArrayNode;->array:[J
+
+    const/4 v1, 0x0
+
+    iget v2, p0, Ljj$/util/stream/Nodes$LongArrayNode;->curSize:I
+
+    invoke-static {v0, v1, v2}, Ljj$/util/DesugarArrays;->spliterator([JII)Ljj$/util/Spliterator$OfLong;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public bridge synthetic spliterator()Ljj$/util/Spliterator$OfPrimitive;
+    .registers 2
+
+    invoke-virtual {p0}, Ljj$/util/stream/Nodes$LongArrayNode;->spliterator()Ljj$/util/Spliterator$OfLong;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public bridge synthetic spliterator()Ljj$/util/Spliterator;
+    .registers 2
+
+    invoke-virtual {p0}, Ljj$/util/stream/Nodes$LongArrayNode;->spliterator()Ljj$/util/Spliterator$OfLong;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .registers 5
+
+    iget-object v0, p0, Ljj$/util/stream/Nodes$LongArrayNode;->array:[J
+
+    array-length v0, v0
+
+    iget v1, p0, Ljj$/util/stream/Nodes$LongArrayNode;->curSize:I
+
+    sub-int/2addr v0, v1
+
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v0
+
+    iget-object v1, p0, Ljj$/util/stream/Nodes$LongArrayNode;->array:[J
+
+    invoke-static {v1}, Ljava/util/Arrays;->toString([J)Ljava/lang/String;
+
+    move-result-object v1
+
+    const/4 v2, 0x2
+
+    new-array v2, v2, [Ljava/lang/Object;
+
+    const/4 v3, 0x0
+
+    aput-object v0, v2, v3
+
+    const/4 v0, 0x1
+
+    aput-object v1, v2, v0
+
+    const-string v0, "LongArrayNode[%d][%s]"
+
+    invoke-static {v0, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public synthetic truncate(JJLjava/util/function/IntFunction;)Ljj$/util/stream/Node$OfLong;
+    .registers 6
+
+    invoke-static/range {p0 .. p5}, Ljj$/util/stream/Node$OfLong$-CC;->$default$truncate(Ljj$/util/stream/Node$OfLong;JJLjava/util/function/IntFunction;)Ljj$/util/stream/Node$OfLong;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public bridge synthetic truncate(JJLjava/util/function/IntFunction;)Ljj$/util/stream/Node$OfPrimitive;
+    .registers 6
+
+    invoke-static/range {p0 .. p5}, Ljj$/util/stream/Node$OfLong$-CC;->$default$truncate(Ljj$/util/stream/Node$OfLong;JJLjava/util/function/IntFunction;)Ljj$/util/stream/Node$OfPrimitive;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public bridge synthetic truncate(JJLjava/util/function/IntFunction;)Ljj$/util/stream/Node;
+    .registers 6
+
+    invoke-static/range {p0 .. p5}, Ljj$/util/stream/Node$OfLong$-CC;->$default$truncate(Ljj$/util/stream/Node$OfLong;JJLjava/util/function/IntFunction;)Ljj$/util/stream/Node;
+
+    move-result-object p1
+
+    return-object p1
+.end method

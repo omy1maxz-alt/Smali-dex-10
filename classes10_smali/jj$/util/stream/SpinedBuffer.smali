@@ -1,0 +1,774 @@
+.class Ljj$/util/stream/SpinedBuffer;
+.super Ljj$/util/stream/AbstractSpinedBuffer;
+.source "SpinedBuffer.java"
+
+# interfaces
+.implements Ljava/util/function/Consumer;
+.implements Ljava/lang/Iterable;
+.implements Ljj$/lang/Iterable;
+
+
+# static fields
+.field private static final SPLITERATOR_CHARACTERISTICS:I = 0x4050
+
+
+# instance fields
+.field protected curChunk:[Ljava/lang/Object;
+
+.field protected spine:[[Ljava/lang/Object;
+
+
+# direct methods
+.method constructor <init>()V
+    .registers 3
+
+    invoke-direct {p0}, Ljj$/util/stream/AbstractSpinedBuffer;-><init>()V
+
+    const/4 v0, 0x1
+
+    iget v1, p0, Ljj$/util/stream/SpinedBuffer;->initialChunkPower:I
+
+    shl-int/2addr v0, v1
+
+    new-array v0, v0, [Ljava/lang/Object;
+
+    iput-object v0, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method constructor <init>(I)V
+    .registers 4
+
+    invoke-direct {p0, p1}, Ljj$/util/stream/AbstractSpinedBuffer;-><init>(I)V
+
+    const/4 v0, 0x1
+
+    iget v1, p0, Ljj$/util/stream/SpinedBuffer;->initialChunkPower:I
+
+    shl-int/2addr v0, v1
+
+    new-array v0, v0, [Ljava/lang/Object;
+
+    iput-object v0, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method private inflateSpine()V
+    .registers 4
+
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    if-nez v0, :cond_15
+
+    const/16 v0, 0x8
+
+    new-array v1, v0, [[Ljava/lang/Object;
+
+    iput-object v1, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    new-array v0, v0, [J
+
+    iput-object v0, p0, Ljj$/util/stream/SpinedBuffer;->priorElementCount:[J
+
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    const/4 v1, 0x0
+
+    iget-object v2, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    aput-object v2, v0, v1
+
+    :cond_15
+    return-void
+.end method
+
+
+# virtual methods
+.method public accept(Ljava/lang/Object;)V
+    .registers 5
+
+    iget v0, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    iget-object v1, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    array-length v1, v1
+
+    if-ne v0, v1, :cond_31
+
+    invoke-direct {p0}, Ljj$/util/stream/SpinedBuffer;->inflateSpine()V
+
+    iget v0, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    add-int/lit8 v0, v0, 0x1
+
+    iget-object v1, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    array-length v1, v1
+
+    if-ge v0, v1, :cond_1d
+
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    iget v1, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    add-int/lit8 v1, v1, 0x1
+
+    aget-object v0, v0, v1
+
+    if-nez v0, :cond_20
+
+    :cond_1d
+    invoke-virtual {p0}, Ljj$/util/stream/SpinedBuffer;->increaseCapacity()V
+
+    :cond_20
+    const/4 v0, 0x0
+
+    iput v0, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    iget v0, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    add-int/lit8 v0, v0, 0x1
+
+    iput v0, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    iget v1, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    aget-object v0, v0, v1
+
+    iput-object v0, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    :cond_31
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    iget v1, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    add-int/lit8 v2, v1, 0x1
+
+    iput v2, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    aput-object p1, v0, v1
+
+    return-void
+.end method
+
+.method public synthetic andThen(Ljava/util/function/Consumer;)Ljava/util/function/Consumer;
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/function/Consumer$-CC;->$default$andThen(Ljava/util/function/Consumer;Ljava/util/function/Consumer;)Ljava/util/function/Consumer;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public asArray(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
+    .registers 7
+
+    invoke-virtual {p0}, Ljj$/util/stream/SpinedBuffer;->count()J
+
+    move-result-wide v0
+
+    const-wide/32 v2, 0x7ffffff7
+
+    cmp-long v4, v0, v2
+
+    if-gez v4, :cond_17
+
+    long-to-int v2, v0
+
+    invoke-interface {p1, v2}, Ljava/util/function/IntFunction;->apply(I)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, [Ljava/lang/Object;
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v2, v3}, Ljj$/util/stream/SpinedBuffer;->copyInto([Ljava/lang/Object;I)V
+
+    return-object v2
+
+    :cond_17
+    new-instance v2, Ljava/lang/IllegalArgumentException;
+
+    const-string v3, "Stream size exceeds max array size"
+
+    invoke-direct {v2, v3}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v2
+.end method
+
+.method protected capacity()J
+    .registers 6
+
+    iget v0, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    if-nez v0, :cond_9
+
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    array-length v0, v0
+
+    int-to-long v0, v0
+
+    goto :goto_19
+
+    :cond_9
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->priorElementCount:[J
+
+    iget v1, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    aget-wide v1, v0, v1
+
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    iget v3, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    aget-object v0, v0, v3
+
+    array-length v0, v0
+
+    int-to-long v3, v0
+
+    add-long/2addr v1, v3
+
+    move-wide v0, v1
+
+    :goto_19
+    return-wide v0
+.end method
+
+.method public clear()V
+    .registers 5
+
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    const/4 v1, 0x0
+
+    const/4 v2, 0x0
+
+    if-eqz v0, :cond_1e
+
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    aget-object v0, v0, v1
+
+    iput-object v0, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    const/4 v0, 0x0
+
+    :goto_d
+    iget-object v3, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    array-length v3, v3
+
+    if-ge v0, v3, :cond_19
+
+    iget-object v3, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    aput-object v2, v3, v0
+
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_d
+
+    :cond_19
+    iput-object v2, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    iput-object v2, p0, Ljj$/util/stream/SpinedBuffer;->priorElementCount:[J
+
+    goto :goto_2a
+
+    :cond_1e
+    const/4 v0, 0x0
+
+    :goto_1f
+    iget v3, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    if-ge v0, v3, :cond_2a
+
+    iget-object v3, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    aput-object v2, v3, v0
+
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_1f
+
+    :cond_2a
+    :goto_2a
+    iput v1, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    iput v1, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    return-void
+.end method
+
+.method public copyInto([Ljava/lang/Object;I)V
+    .registers 9
+
+    int-to-long v0, p2
+
+    invoke-virtual {p0}, Ljj$/util/stream/SpinedBuffer;->count()J
+
+    move-result-wide v2
+
+    add-long/2addr v0, v2
+
+    array-length v2, p1
+
+    int-to-long v2, v2
+
+    cmp-long v4, v0, v2
+
+    if-gtz v4, :cond_44
+
+    int-to-long v2, p2
+
+    cmp-long v4, v0, v2
+
+    if-ltz v4, :cond_44
+
+    iget v2, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    const/4 v3, 0x0
+
+    if-nez v2, :cond_1e
+
+    iget-object v2, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    iget v4, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    invoke-static {v2, v3, p1, p2, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    goto :goto_43
+
+    :cond_1e
+    const/4 v2, 0x0
+
+    :goto_1f
+    iget v4, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    if-ge v2, v4, :cond_38
+
+    iget-object v4, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    aget-object v4, v4, v2
+
+    iget-object v5, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    aget-object v5, v5, v2
+
+    array-length v5, v5
+
+    invoke-static {v4, v3, p1, p2, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    iget-object v4, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    aget-object v4, v4, v2
+
+    array-length v4, v4
+
+    add-int/2addr p2, v4
+
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_1f
+
+    :cond_38
+    iget v2, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    if-lez v2, :cond_43
+
+    iget-object v2, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    iget v4, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    invoke-static {v2, v3, p1, p2, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    :cond_43
+    :goto_43
+    return-void
+
+    :cond_44
+    new-instance v2, Ljava/lang/IndexOutOfBoundsException;
+
+    const-string v3, "does not fit"
+
+    invoke-direct {v2, v3}, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+
+    throw v2
+.end method
+
+.method protected final ensureCapacity(J)V
+    .registers 13
+
+    invoke-virtual {p0}, Ljj$/util/stream/SpinedBuffer;->capacity()J
+
+    move-result-wide v0
+
+    cmp-long v2, p1, v0
+
+    if-lez v2, :cond_51
+
+    invoke-direct {p0}, Ljj$/util/stream/SpinedBuffer;->inflateSpine()V
+
+    iget v2, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    add-int/lit8 v2, v2, 0x1
+
+    :goto_f
+    cmp-long v3, p1, v0
+
+    if-lez v3, :cond_51
+
+    iget-object v3, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    array-length v3, v3
+
+    if-lt v2, v3, :cond_2f
+
+    iget-object v3, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    array-length v3, v3
+
+    mul-int/lit8 v3, v3, 0x2
+
+    iget-object v4, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    invoke-static {v4, v3}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, [[Ljava/lang/Object;
+
+    iput-object v4, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    iget-object v4, p0, Ljj$/util/stream/SpinedBuffer;->priorElementCount:[J
+
+    invoke-static {v4, v3}, Ljava/util/Arrays;->copyOf([JI)[J
+
+    move-result-object v4
+
+    iput-object v4, p0, Ljj$/util/stream/SpinedBuffer;->priorElementCount:[J
+
+    :cond_2f
+    invoke-virtual {p0, v2}, Ljj$/util/stream/SpinedBuffer;->chunkSize(I)I
+
+    move-result v3
+
+    iget-object v4, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    new-array v5, v3, [Ljava/lang/Object;
+
+    aput-object v5, v4, v2
+
+    iget-object v4, p0, Ljj$/util/stream/SpinedBuffer;->priorElementCount:[J
+
+    iget-object v5, p0, Ljj$/util/stream/SpinedBuffer;->priorElementCount:[J
+
+    add-int/lit8 v6, v2, -0x1
+
+    aget-wide v6, v5, v6
+
+    iget-object v5, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    add-int/lit8 v8, v2, -0x1
+
+    aget-object v5, v5, v8
+
+    array-length v5, v5
+
+    int-to-long v8, v5
+
+    add-long/2addr v6, v8
+
+    aput-wide v6, v4, v2
+
+    int-to-long v4, v3
+
+    add-long/2addr v0, v4
+
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_f
+
+    :cond_51
+    return-void
+.end method
+
+.method public forEach(Ljava/util/function/Consumer;)V
+    .registers 7
+
+    const/4 v0, 0x0
+
+    :goto_1
+    iget v1, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    if-ge v0, v1, :cond_18
+
+    iget-object v1, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    aget-object v1, v1, v0
+
+    array-length v2, v1
+
+    const/4 v3, 0x0
+
+    :goto_b
+    if-ge v3, v2, :cond_15
+
+    aget-object v4, v1, v3
+
+    invoke-interface {p1, v4}, Ljava/util/function/Consumer;->accept(Ljava/lang/Object;)V
+
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_b
+
+    :cond_15
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_1
+
+    :cond_18
+    const/4 v0, 0x0
+
+    :goto_19
+    iget v1, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    if-ge v0, v1, :cond_27
+
+    iget-object v1, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    aget-object v1, v1, v0
+
+    invoke-interface {p1, v1}, Ljava/util/function/Consumer;->accept(Ljava/lang/Object;)V
+
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_19
+
+    :cond_27
+    return-void
+.end method
+
+.method public get(J)Ljava/lang/Object;
+    .registers 9
+
+    iget v0, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    if-nez v0, :cond_1b
+
+    iget v0, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    int-to-long v0, v0
+
+    cmp-long v2, p1, v0
+
+    if-gez v2, :cond_11
+
+    iget-object v0, p0, Ljj$/util/stream/SpinedBuffer;->curChunk:[Ljava/lang/Object;
+
+    long-to-int v1, p1
+
+    aget-object v0, v0, v1
+
+    return-object v0
+
+    :cond_11
+    new-instance v0, Ljava/lang/IndexOutOfBoundsException;
+
+    invoke-static {p1, p2}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    :cond_1b
+    invoke-virtual {p0}, Ljj$/util/stream/SpinedBuffer;->count()J
+
+    move-result-wide v0
+
+    cmp-long v2, p1, v0
+
+    if-gez v2, :cond_52
+
+    const/4 v0, 0x0
+
+    :goto_24
+    iget v1, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    if-gt v0, v1, :cond_48
+
+    iget-object v1, p0, Ljj$/util/stream/SpinedBuffer;->priorElementCount:[J
+
+    aget-wide v2, v1, v0
+
+    iget-object v1, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    aget-object v1, v1, v0
+
+    array-length v1, v1
+
+    int-to-long v4, v1
+
+    add-long/2addr v2, v4
+
+    cmp-long v1, p1, v2
+
+    if-gez v1, :cond_45
+
+    iget-object v1, p0, Ljj$/util/stream/SpinedBuffer;->spine:[[Ljava/lang/Object;
+
+    aget-object v1, v1, v0
+
+    iget-object v2, p0, Ljj$/util/stream/SpinedBuffer;->priorElementCount:[J
+
+    aget-wide v3, v2, v0
+
+    sub-long v3, p1, v3
+
+    long-to-int v2, v3
+
+    aget-object v1, v1, v2
+
+    return-object v1
+
+    :cond_45
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_24
+
+    :cond_48
+    new-instance v0, Ljava/lang/IndexOutOfBoundsException;
+
+    invoke-static {p1, p2}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    :cond_52
+    new-instance v0, Ljava/lang/IndexOutOfBoundsException;
+
+    invoke-static {p1, p2}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/IndexOutOfBoundsException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method protected increaseCapacity()V
+    .registers 5
+
+    invoke-virtual {p0}, Ljj$/util/stream/SpinedBuffer;->capacity()J
+
+    move-result-wide v0
+
+    const-wide/16 v2, 0x1
+
+    add-long/2addr v0, v2
+
+    invoke-virtual {p0, v0, v1}, Ljj$/util/stream/SpinedBuffer;->ensureCapacity(J)V
+
+    return-void
+.end method
+
+.method public iterator()Ljava/util/Iterator;
+    .registers 2
+
+    invoke-virtual {p0}, Ljj$/util/stream/SpinedBuffer;->spliterator()Ljj$/util/Spliterator;
+
+    move-result-object v0
+
+    invoke-static {v0}, Ljj$/util/Spliterators;->iterator(Ljj$/util/Spliterator;)Ljava/util/Iterator;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public synthetic spliterator()Ljava/util/Spliterator;
+    .registers 2
+
+    invoke-virtual {p0}, Ljj$/util/stream/SpinedBuffer;->spliterator()Ljj$/util/Spliterator;
+
+    move-result-object v0
+
+    invoke-static {v0}, Ljj$/util/Spliterator$Wrapper;->convert(Ljj$/util/Spliterator;)Ljava/util/Spliterator;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public spliterator()Ljj$/util/Spliterator;
+    .registers 7
+
+    new-instance v0, Ljj$/util/stream/SpinedBuffer$1Splitr;
+
+    iget v3, p0, Ljj$/util/stream/SpinedBuffer;->spineIndex:I
+
+    const/4 v4, 0x0
+
+    iget v5, p0, Ljj$/util/stream/SpinedBuffer;->elementIndex:I
+
+    const/4 v2, 0x0
+
+    move-object v1, p0
+
+    invoke-direct/range {v0 .. v5}, Ljj$/util/stream/SpinedBuffer$1Splitr;-><init>(Ljj$/util/stream/SpinedBuffer;IIII)V
+
+    return-object v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .registers 5
+
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    invoke-static {v0}, Ljj$/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
+    new-instance v1, Ljj$/util/stream/SpinedBuffer$$ExternalSyntheticLambda0;
+
+    invoke-direct {v1, v0}, Ljj$/util/stream/SpinedBuffer$$ExternalSyntheticLambda0;-><init>(Ljava/util/List;)V
+
+    invoke-virtual {p0, v1}, Ljj$/util/stream/SpinedBuffer;->forEach(Ljava/util/function/Consumer;)V
+
+    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "SpinedBuffer:"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    return-object v1
+.end method

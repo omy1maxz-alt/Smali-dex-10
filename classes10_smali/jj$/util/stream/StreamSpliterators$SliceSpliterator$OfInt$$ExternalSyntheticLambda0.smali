@@ -1,0 +1,36 @@
+.class public final synthetic Ljj$/util/stream/StreamSpliterators$SliceSpliterator$OfInt$$ExternalSyntheticLambda0;
+.super Ljava/lang/Object;
+.source "D8$$SyntheticClass"
+
+# interfaces
+.implements Ljava/util/function/IntConsumer;
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final accept(I)V
+    .registers 2
+
+    invoke-static {p1}, Ljj$/util/stream/StreamSpliterators$SliceSpliterator$OfInt;->lambda$emptyConsumer$0(I)V
+
+    return-void
+.end method
+
+.method public synthetic andThen(Ljava/util/function/IntConsumer;)Ljava/util/function/IntConsumer;
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/function/IntConsumer$-CC;->$default$andThen(Ljava/util/function/IntConsumer;Ljava/util/function/IntConsumer;)Ljava/util/function/IntConsumer;
+
+    move-result-object p1
+
+    return-object p1
+.end method

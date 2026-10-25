@@ -1,0 +1,36 @@
+.class public final synthetic Ljj$/util/stream/StreamSpliterators$SliceSpliterator$OfDouble$$ExternalSyntheticLambda0;
+.super Ljava/lang/Object;
+.source "D8$$SyntheticClass"
+
+# interfaces
+.implements Ljava/util/function/DoubleConsumer;
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final accept(D)V
+    .registers 3
+
+    invoke-static {p1, p2}, Ljj$/util/stream/StreamSpliterators$SliceSpliterator$OfDouble;->lambda$emptyConsumer$0(D)V
+
+    return-void
+.end method
+
+.method public synthetic andThen(Ljava/util/function/DoubleConsumer;)Ljava/util/function/DoubleConsumer;
+    .registers 2
+
+    invoke-static {p0, p1}, Ljj$/util/function/DoubleConsumer$-CC;->$default$andThen(Ljava/util/function/DoubleConsumer;Ljava/util/function/DoubleConsumer;)Ljava/util/function/DoubleConsumer;
+
+    move-result-object p1
+
+    return-object p1
+.end method

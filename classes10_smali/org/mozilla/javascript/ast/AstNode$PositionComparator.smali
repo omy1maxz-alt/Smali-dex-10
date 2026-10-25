@@ -1,0 +1,49 @@
+.class public Lorg/mozilla/javascript/ast/AstNode$PositionComparator;
+.super Ljava/lang/Object;
+.source "AstNode.java"
+
+# interfaces
+.implements Ljava/util/Comparator;
+.implements Ljava/io/Serializable;
+
+
+# static fields
+.field private static final serialVersionUID:J = 0x1L
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    .registers 3
+
+    check-cast p1, Lorg/mozilla/javascript/ast/AstNode;
+
+    check-cast p2, Lorg/mozilla/javascript/ast/AstNode;
+
+    invoke-virtual {p0, p1, p2}, Lorg/mozilla/javascript/ast/AstNode$PositionComparator;->compare(Lorg/mozilla/javascript/ast/AstNode;Lorg/mozilla/javascript/ast/AstNode;)I
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public compare(Lorg/mozilla/javascript/ast/AstNode;Lorg/mozilla/javascript/ast/AstNode;)I
+    .registers 3
+
+    iget p1, p1, Lorg/mozilla/javascript/ast/AstNode;->position:I
+
+    iget p2, p2, Lorg/mozilla/javascript/ast/AstNode;->position:I
+
+    sub-int/2addr p1, p2
+
+    return p1
+.end method
