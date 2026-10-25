@@ -144,29 +144,8 @@
 .end method
 
 .method public static show(Landroid/app/Activity;)V
-    .registers 3
-    .param p0, "activity"  # Landroid/app/Activity;
+    .registers 1
 
-    .line 43
-    invoke-static {p0}, Lcom/sammods4h/task/DevMsg;->canCheckServer(Landroid/content/Context;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_11
-
-    .line 44
-    new-instance v0, Lcom/sammods4h/task/DevMsg$FetchConfigTask;
-
-    invoke-direct {v0, p0}, Lcom/sammods4h/task/DevMsg$FetchConfigTask;-><init>(Landroid/app/Activity;)V
-
-    const/4 v1, 0x0
-
-    new-array v1, v1, [Ljava/lang/Void;
-
-    invoke-virtual {v0, v1}, Lcom/sammods4h/task/DevMsg$FetchConfigTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
-
-    .line 46
-    :cond_11
     return-void
 .end method
 
