@@ -208,7 +208,6 @@
 
     invoke-super {p0}, Lcom/google/android/apps/youtube/app/YouTubeTikTokRoot_Application;->onCreate()V
 
-    invoke-static {p0}, Landroidx/car/app/fagmemt;->0nCreate(Landroid/content/Context;)V
 
     sput-object p0, Lcom/gold/youtube/om7753/App;->context:Landroid/content/Context;
 
